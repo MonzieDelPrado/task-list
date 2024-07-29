@@ -48,4 +48,3 @@ export const AddTaskForm = ({ fetchTasks }) => {
   );
 };
 
-export default AddTaskForm; // this line isn't on project

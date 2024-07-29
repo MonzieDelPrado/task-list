@@ -43,7 +43,7 @@ export const UpdateTaskForm = ({
           variant="contained"
           onClick={async () => {
             await handleUpdateTaskName();
-
+            
             setIsDialogOpen(false);
           }}
         >
@@ -53,5 +53,3 @@ export const UpdateTaskForm = ({
     </Dialog>
   );
 };
-
-export default UpdateTaskForm; // this one as well

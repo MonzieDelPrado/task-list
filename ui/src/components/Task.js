@@ -53,7 +53,6 @@ export const Task = ({ task, fetchTasks }) => {
           <DeleteIcon />
         </Button>
       </div>
-
       <UpdateTaskForm
         fetchTasks={fetchTasks}
         isDialogOpen={isDialogOpen}
@@ -63,5 +62,3 @@ export const Task = ({ task, fetchTasks }) => {
     </div>
   );
 };
-
-export default Task; // this one also isn't there
