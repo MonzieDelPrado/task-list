@@ -38,7 +38,6 @@ app.post("/task", async (req, res) => {
   }
 });
 
-// UPDATING ROUTE
 app.put("/task", async (req, res) => {
   try {
     const task = req.body;
@@ -51,7 +50,6 @@ app.put("/task", async (req, res) => {
   }
 });
 
-// DELETE ROUTE
 app.delete("/task/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -66,7 +64,7 @@ app.delete("/task/:id", async (req, res) => {
 
 if (process.env.DEVELOPMENT) {
   app.listen(port, () => {
-    console.log(`Example app listening on port 3001`);
+    console.log(`Example app listening on port ${port}`);
   });
 }
 
