@@ -2,7 +2,7 @@ import { Button, Checkbox, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import React, { useState } from "react";
-import UpdateTaskForm from "./UpdateTaskForm";
+import { UpdateTaskForm } from "./UpdateTaskForm";
 import classnames from "classnames";
 import axios from "axios";
 import { API_URL } from "../utils";
@@ -19,7 +19,6 @@ export const Task = ({ task, fetchTasks }) => {
         name,
         completed: !isComplete,
       });
-
       setIsComplete((prev) => !prev);
     } catch (err) {
       console.log(err);
@@ -28,11 +27,11 @@ export const Task = ({ task, fetchTasks }) => {
 
   const handleDeleteTask = async () => {
     try {
-        await axios.delete(`${API_URL}/${task.id}`);
+      await axios.delete(`${API_URL}/${task.id}`);
 
-        await fetchTasks();
+      await fetchTasks();
     } catch (err) {
-        console.log(err);
+      console.log(err);
     }
   };
 
@@ -50,13 +49,9 @@ export const Task = ({ task, fetchTasks }) => {
         <Button variant="contained" onClick={() => setIsDialogOpen(true)}>
           <EditIcon />
         </Button>
-        <Button
-          color="error"
-          variant="contained"
-          onClick={() => handleDeleteTask()}
-        >
+        <Button color="error" variant="contained" onClick={handleDeleteTask}>
           <DeleteIcon />
-        </Button>{" "}
+        </Button>
       </div>
 
       <UpdateTaskForm
@@ -69,4 +64,4 @@ export const Task = ({ task, fetchTasks }) => {
   );
 };
 
-export default Task;
+export default Task; // this one also isn't there

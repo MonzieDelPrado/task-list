@@ -42,10 +42,10 @@ export const AddTaskForm = ({ fetchTasks }) => {
           onClick={addNewTask}
         >
           <AddIcon />
-        </Button>{" "}
+        </Button>
       </div>
     </div>
   );
 };
 
-export default AddTaskForm;
+export default AddTaskForm; // this line isn't on project

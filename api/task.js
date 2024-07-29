@@ -6,11 +6,10 @@ import {
   ScanCommand,
   DeleteCommand,
 } from "@aws-sdk/lib-dynamodb";
-import crypto from "crypto"
+import crypto from "crypto";
 
-const client = new DynamoDBClient({ region: "us-west-1" });
+const client = new DynamoDBClient({ region: "ap-southeast-2" });
 const docClient = DynamoDBDocumentClient.from(client);
-
 
 export const fetchTasks = async () => {
   const command = new ScanCommand({
@@ -19,56 +18,57 @@ export const fetchTasks = async () => {
     TableName: "Tasks",
   });
 
-  const response = await docClient(command);
+  const response = await docClient.send(command);
+
   return response;
 };
 
-
-export const createTasks = async ({name, completed}) => {
-  const uuid = crypto.randomUUID  
+export const createTasks = async ({ name, completed }) => {
+  const uuid = crypto.randomUUID();
   const command = new PutCommand({
     TableName: "Tasks",
     Item: {
-        id: uuid,
-        name,
-        completed
-    }
-  })
-  const response = await docClient.send(command);
-  return response;
-};
-
-
-export const updateTasks = async ({id, name, completed}) => {
-  const command = new UpdateCommand({
-    TableName: "Tasks",
-    Key: {
-        id
+      id: uuid,
+      name,
+      completed,
     },
-    ExpressionAttributeNames: {
-        "#name": "name"
-    },
-    UpdateExpression: "set #name = :n, completed = :c",
-    ExpressionAttributeValues: {
-        ":n": name,
-        ":c": completed
-    },
-    ReturnValues: "ALL_NEW"
   });
 
   const response = await docClient.send(command);
+
   return response;
 };
 
+export const updateTasks = async ({ id, name, completed }) => {
+  const command = new UpdateCommand({
+    TableName: "Tasks",
+    Key: {
+      id,
+    },
+    ExpressionAttributeNames: {
+      "#name": "name",
+    },
+    UpdateExpression: "set #name = :n, completed = :c",
+    ExpressionAttributeValues: {
+      ":n": name,
+    },
+    ReturnValues: "ALL_NEW",
+  });
+
+  const response = await docClient.send(command);
+
+  return response;
+};
 
 export const deleteTasks = async (id) => {
   const command = new DeleteCommand({
     TableName: "Tasks",
     Key: {
-        id,
+      id,
     },
   });
 
   const response = await docClient.send(command);
+
   return response;
 };

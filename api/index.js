@@ -28,7 +28,7 @@ app.get("/task", async (req, res) => {
 
 app.post("/task", async (req, res) => {
   try {
-    const tasks = req.body;
+    const task = req.body;
 
     const response = await createTasks(task);
 
@@ -41,7 +41,7 @@ app.post("/task", async (req, res) => {
 // UPDATING ROUTE
 app.put("/task", async (req, res) => {
   try {
-    const tasks = req.body;
+    const task = req.body;
 
     const response = await updateTasks(task);
 
