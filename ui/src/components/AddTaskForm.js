@@ -18,8 +18,8 @@ export const AddTaskForm = ({ fetchTasks }) => {
       await fetchTasks();
 
       setNewTask("");
-    } catch (error) {
-        console.log(err);
+    } catch (err) {
+      console.log(err);
     }
   };
 
