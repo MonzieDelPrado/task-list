@@ -1,1 +1,1 @@
-export const API_URL = "https://rq42gqqqlru75rbb5g7vt23etm0ladmk.lambda-url.ap-southeast-2.on.aws/task";
+export const API_URL = "https://c74qimwxzbfer4gvxdmaanjlcu0gjioj.lambda-url.ap-southeast-2.on.aws/task";
